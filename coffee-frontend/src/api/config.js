@@ -1,25 +1,33 @@
 import axios from 'axios';
 
-const token = localStorage.getItem('token');
+const baseURL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api/v1';
 
 export const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3001/api/v1',
+    baseURL,
     headers: {
-        'Content-Type': 'application/json',
-        ...(token ? { Authorization: `Bearer ${token}` } : {})
+        'Content-Type': 'application/json'
     }
 });
 
-// Add response interceptor to handle token expiration
+// Add token to requests if it exists
+api.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
+// Handle token expiration
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
         if (error.response?.status === 401) {
-            // Handle token expiration
             localStorage.removeItem('token');
-            localStorage.removeItem('refreshToken');
+            localStorage.removeItem('user');
             window.location.href = '/login';
         }
         return Promise.reject(error);
     }
+);
 );
