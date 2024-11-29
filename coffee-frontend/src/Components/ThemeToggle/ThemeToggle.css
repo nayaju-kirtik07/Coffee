@@ -1,0 +1,163 @@
+/* Dark Mode Base */
+.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+/* Navbar Dark Mode */
+.dark-mode .app-bar {
+    background: rgba(26, 26, 26, 0.95) !important;
+}
+
+.dark-mode .logo-text,
+.dark-mode .nav-button,
+.dark-mode .cart-icon {
+    color: var(--text-dark) !important;
+}
+
+.dark-mode .navbar-signup-button {
+    color: var(--text-dark) !important;
+    border-color: var(--text-dark) !important;
+}
+
+.dark-mode .navbar-signup-button:hover {
+    background-color: var(--text-dark) !important;
+    color: var(--background-dark) !important;
+}
+
+/* Landing Page Dark Mode */
+.dark-mode .landing-container {
+    background-color: var(--background-dark);
+}
+
+/* Hero Section */
+.dark-mode .hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg') center/cover !important;
+}
+
+.dark-mode .hero-section h1 {
+    color: var(--text-dark);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .cta-button {
+    background-color: #8B593A;
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+}
+
+.dark-mode .cta-button:hover {
+    background-color: var(--text-dark);
+    color: #8B593A;
+}
+
+/* Features Section */
+.dark-mode .features-section {
+    background-color: #2d2d2d;
+}
+
+.dark-mode .feature-card {
+    background-color: #1a1a1a;
+    border: 1px solid #404040;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .feature-card h3 {
+    color: #8B593A;
+}
+
+.dark-mode .feature-card p {
+    color: #cccccc;
+}
+
+/* Weekly Specials Section */
+.dark-mode .specials-section {
+    background-color: #2d2d2d;
+}
+
+.dark-mode .specials-section h2 {
+    color: #8B593A;
+}
+
+.dark-mode .special-card {
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .special-card h3 {
+    color: #8B593A;
+}
+
+.dark-mode .special-card p {
+    color: #cccccc;
+}
+
+.dark-mode .order-button {
+    background-color: #8B593A;
+    color: var(--text-dark);
+    border: 1px solid var(--text-dark);
+}
+
+.dark-mode .order-button:hover {
+    background-color: var(--text-dark);
+    color: #8B593A;
+}
+
+/* Contact Section */
+.dark-mode .contact-section {
+    background-color: #1a1a1a;
+}
+
+.dark-mode .contact-section h2,
+.dark-mode .contact-info h3,
+.dark-mode .phone {
+    color: #8B593A;
+}
+
+.dark-mode .contact-info p {
+    color: #cccccc;
+}
+
+/* Search Input Dark Mode */
+.dark-mode .search-input {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .search-input .MuiOutlinedInput-root {
+    color: var(--text-dark);
+}
+
+.dark-mode .search-input .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .search-input .MuiInputAdornment-root .MuiSvgIcon-root {
+    color: var(--text-dark);
+}
+
+/* Mobile Menu Dark Mode */
+.dark-mode .mobile-menu {
+    background-color: #1a1a1a;
+}
+
+.dark-mode .drawer-title,
+.dark-mode .mobile-nav-button {
+    color: var(--text-dark) !important;
+}
+
+.dark-mode .mobile-nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Transitions */
+.hero-section,
+.features-section,
+.feature-card,
+.specials-section,
+.special-card,
+.contact-section,
+.cta-button,
+.order-button {
+    transition: all 0.1s ease;
+}

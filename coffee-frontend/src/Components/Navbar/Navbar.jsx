@@ -20,6 +20,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './Navbar.css';
 import { useAuth } from '../../Context/AuthContext';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import '../ThemeToggle/ThemeToggle.css';          
 
 const Navbar = () => {
     const { user, logout } = useAuth();
@@ -88,17 +90,17 @@ const Navbar = () => {
                 </ListItem>
                 <ListItem>
                     {user ? (
-                        <Button 
-                            className="mobile-nav-button" 
-                            fullWidth 
+                        <Button
+                            className="mobile-nav-button"
+                            fullWidth
                             onClick={handleLogout}
                         >
                             Logout
                         </Button>
                     ) : (
-                        <Button 
-                            className="mobile-nav-button" 
-                            fullWidth 
+                        <Button
+                            className="mobile-nav-button"
+                            fullWidth
                             onClick={() => navigate("/login")}
                         >
                             Sign Up
@@ -129,20 +131,37 @@ const Navbar = () => {
     return (
         <AppBar position="fixed" className="app-bar">
             <Toolbar className="toolbar">
-                {/* Logo */}
+                {/* Logo with Link */}
                 <Typography
                     variant="h6"
                     className="logo-text"
                     fontFamily="Playfair Display"
+                    onClick={() => navigate('/')}
+                    style={{ cursor: 'pointer' }}
                 >
                     Grab a Coffee
                 </Typography>
 
                 {/* Center Navigation */}
                 <Stack direction="row" spacing={2} className="center-nav">
-                    <Button className="nav-button">Home</Button>
-                    <Button className="nav-button">Menu</Button>
-                    <Button className="nav-button">Contact</Button>
+                    <Button 
+                        className="nav-button"
+                        onClick={() => navigate('/')}
+                    >
+                        Home
+                    </Button>
+                    <Button 
+                        className="nav-button"
+                        onClick={() => navigate('/menu')}
+                    >
+                        Menu
+                    </Button>
+                    <Button 
+                        className="nav-button"
+                        onClick={() => navigate('/contact')}
+                    >
+                        Contact
+                    </Button>
                 </Stack>
 
                 {/* Right Side Items */}
@@ -165,16 +184,17 @@ const Navbar = () => {
                     <IconButton className="cart-icon">
                         <ShoppingCartIcon />
                     </IconButton>
+                    <ThemeToggle />
                     {user ? (
-                        <Button 
-                            onClick={handleLogout} 
+                        <Button
+                            onClick={handleLogout}
                             className="navbar-signup-button"
                         >
                             Logout
                         </Button>
                     ) : (
-                        <Button 
-                            onClick={() => navigate("/login")} 
+                        <Button
+                            onClick={() => navigate("/login")}
                             className="navbar-signup-button"
                         >
                             Sign Up
