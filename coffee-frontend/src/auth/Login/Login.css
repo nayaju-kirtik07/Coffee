@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap');
+
+.login-container {
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.login-content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-title {
+    font-family: 'Playfair Display', serif !important;
+    color: #6B4423 !important;
+    text-align: center;
+    margin-bottom: 10px !important;
+    font-weight: 700 !important;
+}
+
+.login-subtitle {
+    font-family: 'Poppins', sans-serif !important;
+    color: #666666;
+    text-align: center;
+    margin-bottom: 30px !important;
+}
+
+.login-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-field {
+    background-color: white;
+    border-radius: 8px;
+}
+
+.input-field .MuiOutlinedInput-root {
+    border-radius: 8px;
+}
+
+.input-field .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #6B4423;
+}
+
+.input-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #6B4423;
+}
+
+.input-field .MuiInputLabel-root.Mui-focused {
+    color: #6B4423;
+}
+
+.login-submit-button {
+    background-color: #6B4423 !important;
+    color: white !important;
+    padding: 12px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.1rem !important;
+    text-transform: none !important;
+    border-radius: 8px !important;
+    margin-top: 10px !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.login-submit-button:hover {
+    background-color: #8B593A !important;
+}
+
+.forgot-password {
+    text-align: center;
+    margin-top: 16px !important;
+}
+
+.forgot-password-button {
+    color: #6B4423 !important;
+    font-family: 'Poppins', sans-serif !important;
+    text-transform: none !important;
+    font-size: 0.9rem !important;
+}
+
+.forgot-password-button:hover {
+    background-color: transparent !important;
+    text-decoration: underline !important;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 24px !important;
+    font-family: 'Poppins', sans-serif !important;
+    color: #666666;
+}
+
+.signup-button {
+    color: white !important;
+    font-family: 'Poppins', sans-serif !important;
+    text-transform: none !important;
+    font-weight: 600 !important;
+    margin-left: 8px !important;
+}
+
+.signup-button:hover {
+    background-color: transparent !important;
+    text-decoration: underline !important;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .login-content {
+        padding: 30px 20px;
+    }
+
+    .login-title {
+        font-size: 2rem !important;
+    }
+
+    .login-subtitle {
+        font-size: 0.9rem !important;
+    }
+}
