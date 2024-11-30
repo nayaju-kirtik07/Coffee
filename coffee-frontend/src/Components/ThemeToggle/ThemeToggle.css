@@ -44,7 +44,7 @@
 .dark-mode .cta-button {
     background-color: #8B593A;
     color: var(--text-dark);
-    border: 2px solid var(--text-dark);
+    /* border: 2px solid var(--background-dark); */
 }
 
 .dark-mode .cta-button:hover {
@@ -57,11 +57,6 @@
     background-color: #2d2d2d;
 }
 
-.dark-mode .feature-card {
-    background-color: #1a1a1a;
-    border: 1px solid #404040;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
 
 .dark-mode .feature-card h3 {
     color: #8B593A;
@@ -96,7 +91,7 @@
 .dark-mode .order-button {
     background-color: #8B593A;
     color: var(--text-dark);
-    border: 1px solid var(--text-dark);
+    border: 1px solid var(--background-dark);
 }
 
 .dark-mode .order-button:hover {
@@ -160,4 +155,185 @@
 .cta-button,
 .order-button {
     transition: all 0.1s ease;
+}
+
+.theme-toggle-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid #ffffff;
+}
+
+.theme-toggle-icon {
+    color: #ffffff !important;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+[data-theme='dark'] .theme-toggle-container {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .theme-toggle-icon {
+    color: #ffffff;
+}
+
+.theme-toggle-container:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* When navbar is scrolled in light mode */
+.scrolled .theme-toggle-container {
+    border-color: #6B4423;
+}
+
+.scrolled .theme-toggle-icon {
+    color: #6B4423;
+}
+
+/* Cart Dark Mode Styles */
+.dark-mode .cart-drawer .MuiDrawer-paper {
+    background-color: #1a1a1a;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .cart-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .cart-header h6 {
+    color: #8B593A;
+}
+
+.dark-mode .empty-cart {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .cart-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .cart-item-details .MuiTypography-root {
+    color: #ffffff;
+}
+
+.dark-mode .cart-item-details .MuiTypography-secondary {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .quantity-controls .MuiIconButton-root {
+    color: #ffffff;
+}
+
+.dark-mode .quantity-controls .MuiIconButton-root.Mui-disabled {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .cart-footer {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .cart-footer h6 {
+    color: #ffffff;
+}
+
+.dark-mode .checkout-button {
+    background-color: #8B593A !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .checkout-button:hover {
+    background-color: #9B694A !important;
+}
+
+.dark-mode .clear-cart-button,
+.dark-mode .cart-header .MuiIconButton-root {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .clear-cart-button:hover,
+.dark-mode .cart-header .MuiIconButton-root:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Cart Scrollbar Styles for Dark Mode */
+.dark-mode .cart-items::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dark-mode .cart-items::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .cart-items::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.dark-mode .cart-items::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Contact Page Dark Mode Styles */
+.dark-mode .contact-form-section {
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .form-container h2 {
+    color: #8B593A;
+}
+
+.dark-mode .contact-input {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.dark-mode .contact-input .MuiOutlinedInput-root {
+    color: #ffffff;
+}
+
+.dark-mode .contact-input .MuiInputLabel-root {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .contact-input .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .contact-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .contact-input .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #8B593A;
+}
+
+.dark-mode .contact-input .MuiInputLabel-root.Mui-focused {
+    color: #8B593A;
+}
+
+.dark-mode .submit-button {
+    background-color: #8B593A !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .submit-button:hover {
+    background-color: #9B694A !important;
+    border-color: rgba(255, 255, 255, 0.2);
 }

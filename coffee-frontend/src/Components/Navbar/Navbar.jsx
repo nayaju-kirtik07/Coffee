@@ -91,15 +91,15 @@ const Navbar = () => {
                     />
                 </ListItem>
                 <ListItem>
-                    <Button 
-                        className="mobile-nav-button" 
+                    <Button
+                        className="mobile-nav-button"
                         fullWidth
                         onClick={() => navigate('/')}
                     >
                         Home
                     </Button>
                 </ListItem>
-                <ListItem>
+                {/* <ListItem>
                     <Button 
                         className="mobile-nav-button" 
                         fullWidth
@@ -107,10 +107,10 @@ const Navbar = () => {
                     >
                         Menu
                     </Button>
-                </ListItem>
+                </ListItem> */}
                 <ListItem>
-                    <Button 
-                        className="mobile-nav-button" 
+                    <Button
+                        className="mobile-nav-button"
                         fullWidth
                         onClick={() => navigate('/contact')}
                     >
@@ -147,7 +147,6 @@ const Navbar = () => {
         <>
             <AppBar position="fixed" className="app-bar">
                 <Toolbar className="toolbar">
-                    {/* Logo */}
                     <Typography
                         variant="h6"
                         className="logo-text"
@@ -161,32 +160,32 @@ const Navbar = () => {
                     {/* Right Side Items */}
                     <Stack direction="row" spacing={2} className="right-nav">
                         <div className="nav-buttons-group">
-                            <Button 
+                            <Button
                                 className="nav-button"
                                 onClick={() => navigate('/')}
                             >
                                 Home
                             </Button>
-                            <Button 
+                            <Button
                                 className="nav-button"
                                 onClick={() => navigate('/menu')}
                             >
                                 Menu
                             </Button>
-                            <Button 
+                            <Button
                                 className="nav-button"
                                 onClick={() => navigate('/contact')}
                             >
                                 Contact
                             </Button>
                         </div>
+
+                        {/* Search and Cart Icons */}
                         <TextField
-                            placeholder="Search..."
-                            value={searchQuery}
-                            onChange={handleSearch}
+                            className="search-input"
                             variant="outlined"
                             size="small"
-                            className="search-input"
+                            placeholder="Search..."
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -200,34 +199,37 @@ const Navbar = () => {
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>
-                        <ThemeToggle />
+                        <ThemeToggle/>
+
+                        {/* User Authentication Button */}
                         {user ? (
-                            <Button
-                                onClick={handleLogout}
-                                className="navbar-signup-button"
-                            >
+                            <Button onClick={handleLogout} className="navbar-signup-button">
                                 Logout
                             </Button>
                         ) : (
-                            <Button
-                                onClick={() => navigate("/login")}
-                                className="navbar-signup-button"
-                            >
+                            <Button onClick={() => navigate("/login")} className="navbar-signup-button">
                                 Sign Up
                             </Button>
                         )}
                     </Stack>
 
                     {/* Mobile Menu Icon */}
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        edge="start"
-                        onClick={handleDrawerToggle}
-                        className="menu-icon"
-                    >
-                        <MenuIcon />
-                    </IconButton>
+                    <Box className="mobile-icons">
+                        <IconButton className="cart-icon" onClick={toggleCart}>
+                            <Badge badgeContent={getTotalItems()} color="error">
+                                <ShoppingCartIcon />
+                            </Badge>
+                        </IconButton>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            edge="start"
+                            onClick={handleDrawerToggle}
+                            className="menu-icon"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    </Box>
                 </Toolbar>
 
                 {/* Mobile Drawer */}

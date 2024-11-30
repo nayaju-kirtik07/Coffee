@@ -7,7 +7,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
 .signup-content {
@@ -45,7 +44,7 @@
 .input-field {
     background-color: rgba(255, 255, 255, 0.9) !important;
     border-radius: 6px !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 10px !important;
 }
 
 .input-field .MuiOutlinedInput-root {
@@ -103,4 +102,43 @@
     border-radius: 4px;
     margin-bottom: 15px !important;
     font-size: 0.8rem !important;
+}
+
+/* Add this to adjust Grid spacing */
+.MuiGrid-root.MuiGrid-container {
+    gap: 10px !important;
+}
+
+.MuiGrid-item {
+    padding-top: 0 !important;
+}
+
+/* Add these styles for the name fields container */
+.name-fields-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.name-field {
+    flex: 1;
+}
+
+/* Update Grid container spacing */
+.MuiGrid-root.MuiGrid-container {
+    gap: 10px !important;
+    flex-direction: column;
+}
+
+.MuiGrid-item {
+    padding-top: 0 !important;
+    width: 100%;
+}
+
+/* Adjust responsive behavior */
+@media (max-width: 480px) {
+    .name-fields-container {
+        flex-direction: column;
+        gap: 10px;
+    }
 }

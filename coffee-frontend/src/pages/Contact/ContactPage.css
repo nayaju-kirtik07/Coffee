@@ -159,7 +159,6 @@
   @media (max-width: 768px) {
     .contact-hero-section {
       height: 45vh;
-      margin-top: 56px;
     }
     
     .contact-hero-section h1 {
@@ -185,4 +184,16 @@
       align-items: center;
       text-align: left;
     }
+  }
+  
+  .contact-input {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  /* Update form container spacing */
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
   }

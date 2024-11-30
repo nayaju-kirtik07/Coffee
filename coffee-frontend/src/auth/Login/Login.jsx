@@ -119,7 +119,7 @@ const Login = () => {
                             required
                             fullWidth
                             variant="outlined"
-                            className="input-field"
+                            className="login-input-field"
                         />
                         
                         <TextField
@@ -131,7 +131,7 @@ const Login = () => {
                             required
                             fullWidth
                             variant="outlined"
-                            className="input-field"
+                            className="login-input-field"
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">

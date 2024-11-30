@@ -86,92 +86,85 @@ const Signup = () => {
                     )}
 
                     <form onSubmit={handleSubmit} className="signup-form">
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    name="first_name"
-                                    label="First Name"
-                                    value={formData.first_name}
-                                    onChange={handleChange}
-                                    required
-                                    fullWidth
-                                    variant="outlined"
-                                    className="input-field"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    name="last_name"
-                                    label="Last Name"
-                                    value={formData.last_name}
-                                    onChange={handleChange}
-                                    required
-                                    fullWidth
-                                    variant="outlined"
-                                    className="input-field"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    name="username"
-                                    label="Username"
-                                    value={formData.username}
-                                    onChange={handleChange}
-                                    required
-                                    fullWidth
-                                    variant="outlined"
-                                    className="input-field"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    name="email"
-                                    label="Email"
-                                    type="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                    fullWidth
-                                    variant="outlined"
-                                    className="input-field"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    name="hashPassword"
-                                    label="Password"
-                                    type="password"
-                                    value={formData.hashPassword}
-                                    onChange={handleChange}
-                                    required
-                                    fullWidth
-                                    variant="outlined"
-                                    className="input-field"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    name="c_hashPassword"
-                                    label="Confirm Password"
-                                    type="password"
-                                    value={formData.c_hashPassword}
-                                    onChange={handleChange}
-                                    required
-                                    fullWidth
-                                    variant="outlined"
-                                    className="input-field"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    fullWidth
-                                    className="signup-button"
-                                >
-                                    Sign Up
-                                </Button>
-                            </Grid>
+                        <div className="name-fields-container">
+                            <TextField
+                                name="first_name"
+                                label="First Name"
+                                value={formData.first_name}
+                                onChange={handleChange}
+                                required
+                                variant="outlined"
+                                className="input-field name-field"
+                            />
+                            <TextField
+                                name="last_name"
+                                label="Last Name"
+                                value={formData.last_name}
+                                onChange={handleChange}
+                                required
+                                variant="outlined"
+                                className="input-field name-field"
+                            />
+                        </div>
+                        
+                        <TextField
+                            name="username"
+                            label="Username"
+                            value={formData.username}
+                            onChange={handleChange}
+                            required
+                            fullWidth
+                            variant="outlined"
+                            className="input-field"
+                        />
+                        <Grid item xs={12}>
+                            <TextField
+                                name="email"
+                                label="Email"
+                                type="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                                fullWidth
+                                variant="outlined"
+                                className="input-field"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                name="hashPassword"
+                                label="Password"
+                                type="password"
+                                value={formData.hashPassword}
+                                onChange={handleChange}
+                                required
+                                fullWidth
+                                variant="outlined"
+                                className="input-field"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                name="c_hashPassword"
+                                label="Confirm Password"
+                                type="password"
+                                value={formData.c_hashPassword}
+                                onChange={handleChange}
+                                required
+                                fullWidth
+                                variant="outlined"
+                                className="input-field"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                fullWidth
+                                className="signup-button"
+                            >
+                                Sign Up
+                            </Button>
                         </Grid>
                     </form>
 

@@ -7,7 +7,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
 .login-content {
@@ -42,13 +41,12 @@
     margin-top: 15px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
-.input-field {
+.login-input-field {
     background-color: rgba(255, 255, 255, 0.9) !important;
     border-radius: 6px;
-    margin-bottom: 12px !important;
 }
 
 .input-field .MuiOutlinedInput-root {
