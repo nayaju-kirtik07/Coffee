@@ -29,7 +29,6 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
     setSnackbar({
       open: true,
       message: 'Thank you for your message! We will get back to you soon.',
@@ -154,13 +153,14 @@ const ContactPage = () => {
         {/* Map Section */}
         <section className="map-section">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.9404038877365!2d85.42631731506244!3d27.673051982804085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1aae42806ba1%3A0x5449e079404e5e82!2sBhaktapur%20Durbar%20Square!5e0!3m2!1sen!2snp!4v1647887641245!5m2!1sen!2snp"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.0298024974437!2d85.42843147501264!3d27.670465576280776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1acd4e2a406f%3A0x3449c92561f08e4b!2sTaumadhi%20Square!5e0!3m2!1sen!2snp!4v1710835146583!5m2!1sen!2snp"
             width="100%"
             height="450"
             style={{ border: 0 }}
             allowFullScreen=""
             loading="lazy"
-            title="Location Map"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Coffee Shop Location"
           ></iframe>
         </section>
 

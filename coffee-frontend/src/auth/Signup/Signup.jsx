@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, TextField, Typography, Grid, Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/config';
+import CustomSnackbar from '../../Components/CustomSnackbar/CustomSnackbar';
 import './Signup.css';
 
 const Signup = () => {
@@ -15,11 +16,20 @@ const Signup = () => {
         c_password: '',
     });
     const [error, setError] = useState('');
+    const [snackbar, setSnackbar] = useState({
+        open: false,
+        message: '',
+        severity: 'success'
+    });
+
+    const handleCloseSnackbar = () => {
+        setSnackbar({ ...snackbar, open: false });
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-        setError(''); // Clear error when user types
+        setError('');
     };
 
     const handleSubmit = async (e) => {
@@ -36,12 +46,25 @@ const Signup = () => {
             });
 
             if (response.status === 201) {
-                console.log('Signup successful:', response.data);
-                navigate('/login'); // Redirect to login page after successful signup
+                setSnackbar({
+                    open: true,
+                    message: 'Account created successfully! Redirecting to login...',
+                    severity: 'success'
+                });
+                
+                // Delay navigation to show the success message
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000);
             }
         } catch (error) {
             console.error('Signup error:', error);
-            setError(error.response?.data || 'An error occurred during signup');
+            setError(error.response?.data?.message || 'An error occurred during signup');
+            setSnackbar({
+                open: true,
+                message: error.response?.data?.message || 'An error occurred during signup',
+                severity: 'error'
+            });
         }
     };
 
@@ -163,6 +186,13 @@ const Signup = () => {
                     </Typography>
                 </Container>
             </div>
+            
+            <CustomSnackbar
+                open={snackbar.open}
+                message={snackbar.message}
+                severity={snackbar.severity}
+                onClose={handleCloseSnackbar}
+            />
         </div>
     );
 };

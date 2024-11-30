@@ -157,8 +157,14 @@
   
   /* Responsive Design Updates */
   @media (max-width: 768px) {
+    .contact-hero-section {
+      height: 45vh;
+      margin-top: 56px;
+    }
+    
     .contact-hero-section h1 {
       font-size: 2.5rem;
+      padding-top: 20px;
     }
     
     .contact-content {

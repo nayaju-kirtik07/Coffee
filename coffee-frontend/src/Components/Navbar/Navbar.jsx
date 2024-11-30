@@ -12,7 +12,8 @@ import {
     ListItem,
     TextField,
     InputAdornment,
-    Box
+    Box,
+    Badge
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -21,13 +22,16 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './Navbar.css';
 import { useAuth } from '../../Context/AuthContext';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
-import '../ThemeToggle/ThemeToggle.css';          
+import '../ThemeToggle/ThemeToggle.css';
+import { useCart } from '../../Context/CartContext';
+import Cart from '../../pages/Cart/Cart';
 
 const Navbar = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
     const [mobileOpen, setMobileOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const { toggleCart, getTotalItems } = useCart();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -56,11 +60,6 @@ const Navbar = () => {
         navigate('/login');
     };
 
-    useEffect(() => {
-        if (user) {
-            console.log('Current user:', user);
-        }
-    }, [user]);
 
     const drawer = (
         <div className="mobile-menu">
@@ -68,105 +67,14 @@ const Navbar = () => {
                 <Typography variant="h6" className="drawer-title">
                     Grab a Coffee
                 </Typography>
-                <IconButton onClick={handleDrawerToggle}>
+                <IconButton onClick={handleDrawerToggle} className="drawer-close">
                     <CloseIcon />
                 </IconButton>
             </div>
-            <List>
-                <ListItem>
-                    <Button className="mobile-nav-button" fullWidth>
-                        Home
-                    </Button>
-                </ListItem>
-                <ListItem>
-                    <Button className="mobile-nav-button" fullWidth>
-                        Menu
-                    </Button>
-                </ListItem>
-                <ListItem>
-                    <Button className="mobile-nav-button" fullWidth>
-                        Contact
-                    </Button>
-                </ListItem>
-                <ListItem>
-                    {user ? (
-                        <Button
-                            className="mobile-nav-button"
-                            fullWidth
-                            onClick={handleLogout}
-                        >
-                            Logout
-                        </Button>
-                    ) : (
-                        <Button
-                            className="mobile-nav-button"
-                            fullWidth
-                            onClick={() => navigate("/login")}
-                        >
-                            Sign Up
-                        </Button>
-                    )}
-                </ListItem>
+            <List className="mobile-menu-list">
                 <ListItem>
                     <TextField
                         fullWidth
-                        placeholder="Search..."
-                        value={searchQuery}
-                        onChange={handleSearch}
-                        variant="outlined"
-                        className="search-input"
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <SearchIcon />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                </ListItem>
-            </List>
-        </div>
-    );
-
-    return (
-        <AppBar position="fixed" className="app-bar">
-            <Toolbar className="toolbar">
-                {/* Logo with Link */}
-                <Typography
-                    variant="h6"
-                    className="logo-text"
-                    fontFamily="Playfair Display"
-                    onClick={() => navigate('/')}
-                    style={{ cursor: 'pointer' }}
-                >
-                    Grab a Coffee
-                </Typography>
-
-                {/* Center Navigation */}
-                <Stack direction="row" spacing={2} className="center-nav">
-                    <Button 
-                        className="nav-button"
-                        onClick={() => navigate('/')}
-                    >
-                        Home
-                    </Button>
-                    <Button 
-                        className="nav-button"
-                        onClick={() => navigate('/menu')}
-                    >
-                        Menu
-                    </Button>
-                    <Button 
-                        className="nav-button"
-                        onClick={() => navigate('/contact')}
-                    >
-                        Contact
-                    </Button>
-                </Stack>
-
-                {/* Right Side Items */}
-                <Stack direction="row" spacing={2} className="right-nav">
-                    <TextField
                         placeholder="Search..."
                         value={searchQuery}
                         onChange={handleSearch}
@@ -181,50 +89,160 @@ const Navbar = () => {
                             ),
                         }}
                     />
-                    <IconButton className="cart-icon">
-                        <ShoppingCartIcon />
-                    </IconButton>
+                </ListItem>
+                <ListItem>
+                    <Button 
+                        className="mobile-nav-button" 
+                        fullWidth
+                        onClick={() => navigate('/')}
+                    >
+                        Home
+                    </Button>
+                </ListItem>
+                <ListItem>
+                    <Button 
+                        className="mobile-nav-button" 
+                        fullWidth
+                        onClick={() => navigate('/menu')}
+                    >
+                        Menu
+                    </Button>
+                </ListItem>
+                <ListItem>
+                    <Button 
+                        className="mobile-nav-button" 
+                        fullWidth
+                        onClick={() => navigate('/contact')}
+                    >
+                        Contact
+                    </Button>
+                </ListItem>
+                <ListItem className="mobile-theme-toggle">
                     <ThemeToggle />
+                </ListItem>
+                <ListItem>
                     {user ? (
                         <Button
+                            className="mobile-nav-button"
+                            fullWidth
                             onClick={handleLogout}
-                            className="navbar-signup-button"
                         >
                             Logout
                         </Button>
                     ) : (
                         <Button
+                            className="mobile-nav-button"
+                            fullWidth
                             onClick={() => navigate("/login")}
-                            className="navbar-signup-button"
                         >
                             Sign Up
                         </Button>
                     )}
-                </Stack>
+                </ListItem>
+            </List>
+        </div>
+    );
 
-                {/* Mobile Menu Icon */}
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    className="menu-icon"
+    return (
+        <>
+            <AppBar position="fixed" className="app-bar">
+                <Toolbar className="toolbar">
+                    {/* Logo */}
+                    <Typography
+                        variant="h6"
+                        className="logo-text"
+                        fontFamily="Playfair Display"
+                        onClick={() => navigate('/')}
+                        style={{ cursor: 'pointer' }}
+                    >
+                        Grab a Coffee
+                    </Typography>
+
+                    {/* Right Side Items */}
+                    <Stack direction="row" spacing={2} className="right-nav">
+                        <div className="nav-buttons-group">
+                            <Button 
+                                className="nav-button"
+                                onClick={() => navigate('/')}
+                            >
+                                Home
+                            </Button>
+                            <Button 
+                                className="nav-button"
+                                onClick={() => navigate('/menu')}
+                            >
+                                Menu
+                            </Button>
+                            <Button 
+                                className="nav-button"
+                                onClick={() => navigate('/contact')}
+                            >
+                                Contact
+                            </Button>
+                        </div>
+                        <TextField
+                            placeholder="Search..."
+                            value={searchQuery}
+                            onChange={handleSearch}
+                            variant="outlined"
+                            size="small"
+                            className="search-input"
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <SearchIcon />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                        <IconButton className="cart-icon" onClick={toggleCart}>
+                            <Badge badgeContent={getTotalItems()} color="error">
+                                <ShoppingCartIcon />
+                            </Badge>
+                        </IconButton>
+                        <ThemeToggle />
+                        {user ? (
+                            <Button
+                                onClick={handleLogout}
+                                className="navbar-signup-button"
+                            >
+                                Logout
+                            </Button>
+                        ) : (
+                            <Button
+                                onClick={() => navigate("/login")}
+                                className="navbar-signup-button"
+                            >
+                                Sign Up
+                            </Button>
+                        )}
+                    </Stack>
+
+                    {/* Mobile Menu Icon */}
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        className="menu-icon"
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                </Toolbar>
+
+                {/* Mobile Drawer */}
+                <Drawer
+                    variant="temporary"
+                    anchor="right"
+                    open={mobileOpen}
+                    onClose={handleDrawerToggle}
+                    className="mobile-drawer"
                 >
-                    <MenuIcon />
-                </IconButton>
-            </Toolbar>
-
-            {/* Mobile Drawer */}
-            <Drawer
-                variant="temporary"
-                anchor="right"
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
-                className="mobile-drawer"
-            >
-                {drawer}
-            </Drawer>
-        </AppBar>
+                    {drawer}
+                </Drawer>
+            </AppBar>
+            <Cart />
+        </>
     );
 };
 

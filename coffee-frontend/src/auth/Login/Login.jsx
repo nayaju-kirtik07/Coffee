@@ -12,6 +12,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { api } from '../../api/config';
 import { useAuth } from '../../Context/AuthContext';
 import './Login.css';
+import CustomSnackbar from '../../Components/CustomSnackbar/CustomSnackbar';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -22,6 +23,11 @@ const Login = () => {
         password: ''
     });
     const [error, setError] = useState('');
+    const [snackbar, setSnackbar] = useState({
+        open: false,
+        message: '',
+        severity: 'success'
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -62,7 +68,12 @@ const Login = () => {
                 localStorage.setItem('refreshToken', refresh_token);
                 
                 // Redirect to home page
-                navigate('/');
+                navigate('/', { 
+                    state: { 
+                        showLoginSuccess: true,
+                        username: formData.email.split('@')[0] 
+                    } 
+                });
             }
         } catch (error) {
             console.error('Login error:', error);
@@ -75,6 +86,10 @@ const Login = () => {
 
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
+    };
+
+    const handleCloseSnackbar = () => {
+        setSnackbar({ ...snackbar, open: false });
     };
 
     return (
@@ -161,6 +176,13 @@ const Login = () => {
                     </Typography>
                 </Container>
             </div>
+            
+            <CustomSnackbar
+                open={snackbar.open}
+                message={snackbar.message}
+                severity={snackbar.severity}
+                onClose={handleCloseSnackbar}
+            />
         </div>
     );
 };

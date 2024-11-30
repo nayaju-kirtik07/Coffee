@@ -1,14 +1,13 @@
 {
-  "name": "backend",
+  "name": "coffee-shop",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "react-scripts build"
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "react": "^18.x.x",
     "react-dom": "^18.x.x",
