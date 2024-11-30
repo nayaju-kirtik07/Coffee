@@ -4,9 +4,16 @@ import './LandingPage.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import CustomSnackbar from '../../Components/CustomSnackbar/CustomSnackbar';
 import { useCart } from '../../Context/CartContext';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 const LandingPage = () => {
-  // Image URLs
   const images = {
     heroBackground: "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg",
     deepBlack: "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg",
@@ -14,7 +21,7 @@ const LandingPage = () => {
     cubano: "https://images.pexels.com/photos/1233528/pexels-photo-1233528.jpeg",
     chocolateCake: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg",
     cheesecake: "https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg",
-    tiramisu: "https://images.pexels.com/photos/6133305/pexels-photo-6133305.jpeg"
+    tiramisu: "https://images.pexels.com/photos/6133305/pexels-photo-6133305.jpeg",
   };
 
   const location = useLocation();
@@ -26,15 +33,72 @@ const LandingPage = () => {
 
   const { addToCart } = useCart();
 
+  const testimonials = [
+    {
+      content: "The best coffee I've ever had! The atmosphere is perfect for both work and relaxation.",
+      author: "Sarah Johnson",
+      role: "Regular Customer"
+    },
+    {
+      content: "Their specialty drinks are amazing. The staff is friendly and the service is quick!",
+      author: "Michael Chen",
+      role: "Coffee Enthusiast"
+    },
+    {
+      content: "A perfect spot for coffee lovers. Their pastries are freshly baked and delicious!",
+      author: "Emily Parker",
+      role: "Food Blogger"
+    },
+    {
+      content: "The ambiance and coffee quality are unmatched. It's my go-to place for meetings.",
+      author: "David Wilson",
+      role: "Business Professional"
+    },
+    {
+      content: "Their attention to detail in every cup makes this place special. Highly recommended!",
+      author: "Lisa Thompson",
+      role: "Coffee Connoisseur"
+    }
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(3);
+
   useEffect(() => {
-    // Check for login success message from navigation state
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setSlidesToShow(1);
+      } else if (window.innerWidth < 1024) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => 
+      prev === testimonials.length - slidesToShow ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => 
+      prev === 0 ? testimonials.length - slidesToShow : prev - 1
+    );
+  };
+
+  useEffect(() => {
     if (location.state?.showLoginSuccess) {
       setSnackbar({
         open: true,
         message: `Welcome back, ${location.state.username}! 👋`,
         severity: 'success'
       });
-      // Clear the state after showing the message
       window.history.replaceState({}, document.title);
     }
   }, [location]);
@@ -61,7 +125,6 @@ const LandingPage = () => {
     <>
       <Navbar />
       <div className="landing-container">
-        {/* Hero Section */}
         <section className="hero-section" style={{
           background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                     url(${images.heroBackground}) center/cover`
@@ -70,7 +133,6 @@ const LandingPage = () => {
           <button className="cta-button">Explore Menu</button>
         </section>
 
-        {/* Features Section */}
         <section className="features-section">
           <div className="feature-card">
             <div className="feature-icon">☕</div>
@@ -94,7 +156,7 @@ const LandingPage = () => {
           </div>
         </section>
 
-        {/* Weekly Specials */}
+
         <section className="specials-section">
           <h2>Weekly Specials</h2>
           <div className="specials-container">
@@ -152,31 +214,106 @@ const LandingPage = () => {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section className="contact-section">
-          <h2>Get in Touch</h2>
-          <div className="contact-container">
-            <div className="contact-info">
-              <div className="contact-card">
-                <h3>Visit Us</h3>
-                <p>Grab a Coffee</p>
-                <p>Bhaktapur, Nepal</p>
-                <p>Near Durbar Square</p>
-              </div>
-              <div className="contact-card">
-                <h3>Call Us</h3>
-                <p className="phone">+977 012345678</p>
-                <p className="phone">+977 987654321</p>
-              </div>
-              <div className="contact-card">
-                <h3>Opening Hours</h3>
-                <p>Monday - Friday: 7:00 AM - 10:00 PM</p>
-                <p>Saturday - Sunday: 8:00 AM - 11:00 PM</p>
-                <p>Holidays: 9:00 AM - 9:00 PM</p>
-              </div>
+
+        <section className="testimonials-section">
+          <h2>What Our Customers Say</h2>
+          <div className="testimonials-container">
+            <div className="testimonials-slider">
+              {testimonials.slice(currentSlide, currentSlide + slidesToShow).map((testimonial, index) => (
+                <div 
+                  key={currentSlide + index} 
+                  className="testimonial-card"
+                  style={{ 
+                    animation: 'slideIn 0.8s ease-out forwards',
+                  }}
+                >
+                  <div className="testimonial-content">
+                    <p>{testimonial.content}</p>
+                  </div>
+                  <div className="testimonial-author">
+                    <h4>{testimonial.author}</h4>
+                    <p>{testimonial.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="slider-dots">
+              {[...Array(testimonials.length - slidesToShow + 1)].map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`slider-dot ${currentSlide === idx ? 'active' : ''}`}
+                  onClick={() => setCurrentSlide(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
             </div>
           </div>
         </section>
+
+
+        <footer className="footer-section">
+          <div className="footer-container">
+            <div className="footer-content">
+              <div className="footer-info">
+                <h3>Grab a Coffee</h3>
+                <p>Experience the perfect blend of tradition and innovation in every cup.</p>
+                <div className="social-links">
+                  <a href="#" aria-label="Facebook"><FacebookIcon /></a>
+                  <a href="#" aria-label="Instagram"><InstagramIcon /></a>
+                  <a href="#" aria-label="Twitter"><TwitterIcon /></a>
+                  <a href="#" aria-label="LinkedIn"><LinkedInIcon /></a>
+                </div>
+              </div>
+
+              <div className="footer-links">
+                <div className="link-group">
+                  <h4>Quick Links</h4>
+                  <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                  </ul>
+                </div>
+
+                <div className="link-group">
+                  <h4>Visit Us</h4>
+                  <ul>
+                    <li><LocationOnIcon className="footer-icon" /> Bhaktapur, Nepal</li>
+                    <li>Near Durbar Square</li>
+                    <li><PhoneIcon className="footer-icon" /> +977 012345678</li>
+                    <li><EmailIcon className="footer-icon" /> info@grabacoffee.com</li>
+                  </ul>
+                </div>
+
+                <div className="link-group">
+                  <h4>Opening Hours</h4>
+                  <ul>
+                    <li><AccessTimeIcon className="footer-icon" /> Monday - Friday</li>
+                    <li>7:00 AM - 10:00 PM</li>
+                    <li><AccessTimeIcon className="footer-icon" /> Saturday - Sunday</li>
+                    <li>8:00 AM - 11:00 PM</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="newsletter-section">
+              <h4>Subscribe to Our Newsletter</h4>
+              <div className="newsletter-form">
+                <input type="email" placeholder="Enter your email" />
+                <button className="subscribe-btn">Subscribe</button>
+              </div>
+            </div>
+
+            <div className="footer-bottom">
+              <p>&copy; 2024 Grab a Coffee. All rights reserved.</p>
+              <div className="footer-bottom-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
       
       <CustomSnackbar

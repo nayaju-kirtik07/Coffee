@@ -32,7 +32,7 @@ const Login = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-        setError(''); // Clear error when user types
+        setError(''); 
     };
 
     const handleSubmit = async (e) => {
@@ -53,7 +53,6 @@ const Login = () => {
                     profileImage 
                 } = response.data;
                 
-                // Store complete user data
                 const userData = {
                     userId,
                     username,
@@ -61,13 +60,10 @@ const Login = () => {
                     email: formData.email
                 };
                 
-                // Login with complete user data
                 login(userData, access_token);
 
-                // Store refresh token separately
                 localStorage.setItem('refreshToken', refresh_token);
                 
-                // Redirect to home page
                 navigate('/', { 
                     state: { 
                         showLoginSuccess: true,

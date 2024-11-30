@@ -1,10 +1,8 @@
-/* Dark Mode Base */
 .dark-mode {
     background-color: var(--background-dark);
     color: var(--text-dark);
 }
 
-/* Navbar Dark Mode */
 .dark-mode .app-bar {
     background: rgba(26, 26, 26, 0.95) !important;
 }
@@ -25,12 +23,10 @@
     color: var(--background-dark) !important;
 }
 
-/* Landing Page Dark Mode */
 .dark-mode .landing-container {
     background-color: var(--background-dark);
 }
 
-/* Hero Section */
 .dark-mode .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
                 url('https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg') center/cover !important;
@@ -44,7 +40,6 @@
 .dark-mode .cta-button {
     background-color: #8B593A;
     color: var(--text-dark);
-    /* border: 2px solid var(--background-dark); */
 }
 
 .dark-mode .cta-button:hover {
@@ -52,7 +47,6 @@
     color: #8B593A;
 }
 
-/* Features Section */
 .dark-mode .features-section {
     background-color: #2d2d2d;
 }
@@ -66,7 +60,6 @@
     color: #cccccc;
 }
 
-/* Weekly Specials Section */
 .dark-mode .specials-section {
     background-color: #2d2d2d;
 }
@@ -99,7 +92,6 @@
     color: #8B593A;
 }
 
-/* Contact Section */
 .dark-mode .contact-section {
     background-color: #1a1a1a;
 }
@@ -114,7 +106,6 @@
     color: #cccccc;
 }
 
-/* Search Input Dark Mode */
 .dark-mode .search-input {
     background: rgba(255, 255, 255, 0.1);
 }
@@ -131,7 +122,6 @@
     color: var(--text-dark);
 }
 
-/* Mobile Menu Dark Mode */
 .dark-mode .mobile-menu {
     background-color: #1a1a1a;
 }
@@ -145,7 +135,6 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Transitions */
 .hero-section,
 .features-section,
 .feature-card,
@@ -192,7 +181,6 @@
     border-color: rgba(255, 255, 255, 0.8);
 }
 
-/* When navbar is scrolled in light mode */
 .scrolled .theme-toggle-container {
     border-color: #6B4423;
 }
@@ -201,7 +189,6 @@
     color: #6B4423;
 }
 
-/* Cart Dark Mode Styles */
 .dark-mode .cart-drawer .MuiDrawer-paper {
     background-color: #1a1a1a;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -269,7 +256,6 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Cart Scrollbar Styles for Dark Mode */
 .dark-mode .cart-items::-webkit-scrollbar {
     width: 8px;
 }
@@ -287,7 +273,6 @@
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Contact Page Dark Mode Styles */
 .dark-mode .contact-form-section {
     background-color: #1a1a1a;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -337,3 +322,233 @@
     background-color: #9B694A !important;
     border-color: rgba(255, 255, 255, 0.2);
 }
+
+.testimonials-section {
+  background-color: #f9f5f2;
+  padding: 80px 20px;
+  position: relative;
+}
+
+.testimonials-section h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: #6B4423;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.testimonials-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #6B4423;
+}
+
+.testimonials-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  flex: 1;
+  min-width: 300px;
+  max-width: 350px;
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(107, 68, 35, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-content {
+  margin-bottom: 20px;
+}
+
+.testimonial-content p {
+  font-family: 'Poppins', sans-serif;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.testimonial-author {
+  text-align: right;
+  border-top: 2px solid #f0e6e0;
+  padding-top: 15px;
+}
+
+.testimonial-author h4 {
+  font-family: 'Playfair Display', serif;
+  color: #6B4423;
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.testimonial-author p {
+  font-family: 'Poppins', sans-serif;
+  color: #888;
+  font-size: 0.9rem;
+  margin: 5px 0 0;
+}
+
+.dark-mode .testimonials-section {
+  background-color: #2d2d2d;
+}
+
+.dark-mode .testimonials-section h2 {
+  color: #8B593A;
+}
+
+.dark-mode .testimonial-card {
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .testimonial-content p {
+  color: #cccccc;
+}
+
+.dark-mode .testimonial-author h4 {
+  color: #8B593A;
+}
+
+.dark-mode .testimonial-author p {
+  color: #999;
+}
+
+.dark-mode .testimonial-author {
+  border-top-color: #333;
+}
+
+@media screen and (max-width: 1200px) {
+  .testimonials-container {
+    max-width: 900px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .testimonials-section h2 {
+    font-size: 2rem;
+  }
+
+  .testimonial-card {
+    min-width: 280px;
+    padding: 25px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .testimonials-section {
+    padding: 60px 15px;
+  }
+
+  .testimonial-card {
+    min-width: 100%;
+    padding: 20px;
+  }
+
+  .testimonial-content p {
+    font-size: 0.95rem;
+  }
+}
+
+.dark-mode .footer-section {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  .dark-mode .footer-info h3 {
+    color: #8b593a;
+  }
+  
+  .dark-mode .footer-info p {
+    color: #e0e0e0;
+  }
+  
+  .dark-mode .social-links a {
+    background-color: rgba(139, 89, 58, 0.15);
+  }
+  
+  .dark-mode .social-links a svg {
+    color: #8b593a;
+  }
+  
+  .dark-mode .link-group h4 {
+    color: #8b593a;
+  }
+  
+  .dark-mode .link-group h4::after {
+    background-color: #8b593a;
+  }
+  
+  .dark-mode .link-group ul li,
+  .dark-mode .link-group ul li a {
+    color: #e0e0e0;
+  }
+  
+  .dark-mode .link-group ul li a:hover {
+    color: #8b593a;
+  }
+  
+  .dark-mode .footer-icon {
+    color: #8b593a !important;
+  }
+  
+  .dark-mode .newsletter-section {
+    background-color: rgba(139, 89, 58, 0.15);
+  }
+  
+  .dark-mode .newsletter-section h4 {
+    color: #8b593a;
+  }
+  
+  .dark-mode .newsletter-form input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(139, 89, 58, 0.3);
+    color: #e0e0e0;
+  }
+  
+  .dark-mode .newsletter-form input::placeholder {
+    color: #999;
+  }
+  
+  .dark-mode .footer-bottom {
+    border-top-color: rgba(139, 89, 58, 0.2);
+  }
+  
+  .dark-mode .footer-bottom p,
+  .dark-mode .footer-bottom-links a {
+    color: #999;
+  }
+  
+  .dark-mode .footer-bottom-links a:hover {
+    color: #8b593a;
+  }
+
+  .dark-mode .slider-dot {
+    background-color: #4a4a4a;
+  }
+  
+  .dark-mode .slider-dot:hover {
+    background-color: #8b593a;
+  }
+  
+  .dark-mode .slider-dot.active {
+    background-color: #8b593a;
+  }

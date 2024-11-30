@@ -52,7 +52,6 @@ const Signup = () => {
                     severity: 'success'
                 });
                 
-                // Delay navigation to show the success message
                 setTimeout(() => {
                     navigate('/login');
                 }, 2000);

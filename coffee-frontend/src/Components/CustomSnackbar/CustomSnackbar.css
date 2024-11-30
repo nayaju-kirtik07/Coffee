@@ -24,7 +24,6 @@
   color: white !important;
 }
 
-/* Animation for snackbar */
 @keyframes slideIn {
   from {
     transform: translateX(100%);

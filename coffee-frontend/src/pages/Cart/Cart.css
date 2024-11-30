@@ -87,7 +87,6 @@
     background-color: #8B593A !important;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 480px) {
     .cart-drawer .MuiDrawer-paper {
         width: 100%;

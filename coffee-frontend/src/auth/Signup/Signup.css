@@ -104,7 +104,6 @@
     font-size: 0.8rem !important;
 }
 
-/* Add this to adjust Grid spacing */
 .MuiGrid-root.MuiGrid-container {
     gap: 10px !important;
 }
@@ -113,7 +112,6 @@
     padding-top: 0 !important;
 }
 
-/* Add these styles for the name fields container */
 .name-fields-container {
     display: flex;
     gap: 10px;
@@ -124,7 +122,6 @@
     flex: 1;
 }
 
-/* Update Grid container spacing */
 .MuiGrid-root.MuiGrid-container {
     gap: 10px !important;
     flex-direction: column;
@@ -135,7 +132,6 @@
     width: 100%;
 }
 
-/* Adjust responsive behavior */
 @media (max-width: 480px) {
     .name-fields-container {
         flex-direction: column;

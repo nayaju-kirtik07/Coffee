@@ -45,14 +45,12 @@ const ContactPage = () => {
     <>
       <Navbar />
       <div className="contact-page-container">
-        {/* Hero Section */}
         <section className="contact-hero-section">
           <h1>Get in Touch</h1>
           <p>We'd love to hear from you!</p>
         </section>
 
         <div className="contact-content">
-          {/* Contact Form */}
           <section className="contact-form-section">
             <div className="form-container">
               <h2>Send us a Message</h2>
@@ -111,7 +109,6 @@ const ContactPage = () => {
             </div>
           </section>
 
-          {/* Contact Info Section */}
           <section className="contact-details-section">
             <div className="contact-details-container">
               <div className="contact-detail">
@@ -150,7 +147,6 @@ const ContactPage = () => {
           </section>
         </div>
 
-        {/* Map Section */}
         <section className="map-section">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.0298024974437!2d85.42843147501264!3d27.670465576280776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1acd4e2a406f%3A0x3449c92561f08e4b!2sTaumadhi%20Square!5e0!3m2!1sen!2snp!4v1710835146583!5m2!1sen!2snp"

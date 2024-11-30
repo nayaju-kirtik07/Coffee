@@ -99,15 +99,6 @@ const Navbar = () => {
                         Home
                     </Button>
                 </ListItem>
-                {/* <ListItem>
-                    <Button 
-                        className="mobile-nav-button" 
-                        fullWidth
-                        onClick={() => navigate('/menu')}
-                    >
-                        Menu
-                    </Button>
-                </ListItem> */}
                 <ListItem>
                     <Button
                         className="mobile-nav-button"
@@ -157,7 +148,6 @@ const Navbar = () => {
                         Grab a Coffee
                     </Typography>
 
-                    {/* Right Side Items */}
                     <Stack direction="row" spacing={2} className="right-nav">
                         <div className="nav-buttons-group">
                             <Button
@@ -180,7 +170,6 @@ const Navbar = () => {
                             </Button>
                         </div>
 
-                        {/* Search and Cart Icons */}
                         <TextField
                             className="search-input"
                             variant="outlined"
@@ -201,7 +190,6 @@ const Navbar = () => {
                         </IconButton>
                         <ThemeToggle/>
 
-                        {/* User Authentication Button */}
                         {user ? (
                             <Button onClick={handleLogout} className="navbar-signup-button">
                                 Logout
@@ -213,7 +201,6 @@ const Navbar = () => {
                         )}
                     </Stack>
 
-                    {/* Mobile Menu Icon */}
                     <Box className="mobile-icons">
                         <IconButton className="cart-icon" onClick={toggleCart}>
                             <Badge badgeContent={getTotalItems()} color="error">
@@ -232,7 +219,6 @@ const Navbar = () => {
                     </Box>
                 </Toolbar>
 
-                {/* Mobile Drawer */}
                 <Drawer
                     variant="temporary"
                     anchor="right"

@@ -5,7 +5,6 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(() => {
-        // Initialize user from localStorage
         const savedUser = localStorage.getItem('user');
         return savedUser ? JSON.parse(savedUser) : null;
     });
@@ -13,7 +12,6 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(() => localStorage.getItem('token'));
 
     useEffect(() => {
-        // Update localStorage when user changes
         if (user) {
             localStorage.setItem('user', JSON.stringify(user));
         } else {
@@ -38,7 +36,6 @@ export const AuthProvider = ({ children }) => {
         delete api.defaults.headers.common['Authorization'];
     };
 
-    // Set axios default header when token changes
     useEffect(() => {
         if (token) {
             api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
