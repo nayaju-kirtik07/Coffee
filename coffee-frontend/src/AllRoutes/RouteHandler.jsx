@@ -3,6 +3,7 @@ import LandingPage from "../pages/Landing/LandingPage";
 import Signup from "../auth/Signup/Signup";
 import Login from "../auth/Login/Login";
 import ContactPage from "../pages/Contact/ContactPage";
+import Menu from "../pages/Menu/Menu";
 
 const AllRoutes = () => {
     return (
@@ -11,6 +12,7 @@ const AllRoutes = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/menu" element={<Menu />} />
         </Routes>
     )
 }

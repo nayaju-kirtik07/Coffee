@@ -400,3 +400,51 @@
     color: #6b4423 !important;
   }
 }
+
+/* Filter Icon Styles */
+.filter-icon {
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+}
+
+.scrolled .filter-icon {
+    color: #6b4423 !important;
+}
+
+/* Dark Mode Styles */
+[data-theme='dark'] .filter-icon {
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .scrolled .filter-icon {
+    color: #ffffff !important;
+}
+
+/* Mobile Styles */
+@media (max-width: 1023px) {
+    .mobile-icons .filter-icon {
+        color: #ffffff !important;
+        margin-right: 8px !important;
+    }
+
+    .scrolled .mobile-icons .filter-icon {
+        color: #6b4423 !important;
+    }
+
+
+    [data-theme='dark'] .scrolled .mobile-icons .filter-icon {
+        color: #ffffff !important;
+    }
+}
+
+/* Hover Effects */
+.filter-icon:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Animation for smooth color transition */
+.filter-icon, 
+.scrolled .filter-icon {
+    transition: all 0.3s ease;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
     AppBar,
     Toolbar,
@@ -19,19 +19,24 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import FilterListIcon from '@mui/icons-material/FilterList';
 import './Navbar.css';
 import { useAuth } from '../../Context/AuthContext';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import '../ThemeToggle/ThemeToggle.css';
 import { useCart } from '../../Context/CartContext';
 import Cart from '../../pages/Cart/Cart';
+import { useFilter } from '../../Context/FilterContext';
+import Filter from '../Filter/Filter';
 
 const Navbar = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
     const [mobileOpen, setMobileOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const { toggleCart, getTotalItems } = useCart();
+    const { toggleFilter } = useFilter();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -97,6 +102,15 @@ const Navbar = () => {
                         onClick={() => navigate('/')}
                     >
                         Home
+                    </Button>
+                </ListItem>
+                <ListItem>
+                    <Button
+                        className="mobile-nav-button"
+                        fullWidth
+                        onClick={() => navigate('/menu')}
+                    >
+                        Menu
                     </Button>
                 </ListItem>
                 <ListItem>
@@ -183,6 +197,11 @@ const Navbar = () => {
                                 ),
                             }}
                         />
+                        {location.pathname === '/menu' && (
+                            <IconButton className="filter-icon" onClick={toggleFilter}>
+                                <FilterListIcon />
+                            </IconButton>
+                        )}
                         <IconButton className="cart-icon" onClick={toggleCart}>
                             <Badge badgeContent={getTotalItems()} color="error">
                                 <ShoppingCartIcon />
@@ -202,6 +221,11 @@ const Navbar = () => {
                     </Stack>
 
                     <Box className="mobile-icons">
+                        {location.pathname === '/menu' && (
+                            <IconButton className="filter-icon" onClick={toggleFilter}>
+                                <FilterListIcon />
+                            </IconButton>
+                        )}
                         <IconButton className="cart-icon" onClick={toggleCart}>
                             <Badge badgeContent={getTotalItems()} color="error">
                                 <ShoppingCartIcon />
@@ -230,6 +254,7 @@ const Navbar = () => {
                 </Drawer>
             </AppBar>
             <Cart />
+            <Filter />
         </>
     );
 };

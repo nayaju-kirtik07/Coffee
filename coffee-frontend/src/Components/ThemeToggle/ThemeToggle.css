@@ -552,3 +552,11 @@
   .dark-mode .slider-dot.active {
     background-color: #8b593a;
   }
+
+  .dark-mode .filter-icon{
+    color: #ffffff !important;
+  }
+
+  .dark-mode .scrolled .mobile-icons .filter-icon {
+    color: #ffffff !important;
+  } 
