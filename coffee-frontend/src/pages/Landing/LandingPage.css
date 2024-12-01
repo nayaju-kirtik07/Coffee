@@ -91,9 +91,9 @@
   transition: transform 0.3s ease;
 }
 
-.desserts-section .special-card:hover {
+/* .desserts-section .special-card:hover {
   transform: translateY(-5px);
-}
+} */
 
 .desserts-section .special-card img {
   height: 250px; 
@@ -177,9 +177,9 @@
   transition: transform 0.3s ease;
 }
 
-.special-card:hover img {
+/* .special-card:hover img {
   transform: scale(1.05);
-}
+} */
 
 .special-card h3 {
   font-family: "Playfair Display", serif;
