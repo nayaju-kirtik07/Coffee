@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const baseURL =
-  "https://coffee-backend-vvob.onrender.com" || "http://localhost:3001/api/v1";
+  "https://coffee-backend-vvob.onrender.com/api/v1" || "http://localhost:3001/api/v1";
 
 export const api = axios.create({
   baseURL,

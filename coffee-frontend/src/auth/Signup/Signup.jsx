@@ -41,8 +41,8 @@ const Signup = () => {
                 last_name: formData.last_name,
                 username: formData.username,
                 email: formData.email,
-                password: formData.hashPassword,
-                c_password: formData.c_hashPassword
+                password: formData.password,
+                c_password: formData.c_password
             });
 
             if (response.status === 201) {
@@ -58,10 +58,10 @@ const Signup = () => {
             }
         } catch (error) {
             console.error('Signup error:', error);
-            setError(error.response?.data?.message || 'An error occurred during signup');
+            setError(error.response?.data || 'An error occurred during signup');
             setSnackbar({
                 open: true,
-                message: error.response?.data?.message || 'An error occurred during signup',
+                message: error.response?.data || 'An error occurred during signup',
                 severity: 'error'
             });
         }
@@ -131,10 +131,10 @@ const Signup = () => {
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
-                                name="hashPassword"
+                                name="password"
                                 label="Password"
                                 type="password"
-                                value={formData.hashPassword}
+                                value={formData.password}
                                 onChange={handleChange}
                                 required
                                 fullWidth
@@ -144,10 +144,10 @@ const Signup = () => {
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
-                                name="c_hashPassword"
+                                name="c_password"
                                 label="Confirm Password"
                                 type="password"
-                                value={formData.c_hashPassword}
+                                value={formData.c_password}
                                 onChange={handleChange}
                                 required
                                 fullWidth
